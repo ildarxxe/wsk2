@@ -1,0 +1,182 @@
+:root {
+    --blue: #002395;
+    --red: #ed2939;
+    --white: #d5e2f0;
+    --gray: #474747;
+    --gray-dark: #333333;
+    --gray-light: #888888;
+}
+
+@font-face {
+    font-family: 'Paris';
+    src: url('./media/05-fonts/Paris2024/Paris2024-Variable.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.f-paris {
+    font-family: 'Paris', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 10vh;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.header__navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: stretch;
+    height: 100%;
+}
+
+.header__logo {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header__links {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    flex: .9;
+}
+
+.header__link {
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+    width: 20%;
+    color: var(--gray-dark);
+    font-weight: bold;
+    height: 100%;
+    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    overflow: hidden;
+    display: inline-grid;
+    text-align: center;
+}
+
+.header__link::before {
+    content: '';
+    width: 10px;
+    background: #71a3d5;
+    right: 88%;
+    bottom: 0;
+    z-index: -1;
+    transform: rotate(25deg);
+    height: 120px;
+    top: -10px;
+    position: absolute;
+}
+
+.header__link::before {
+    margin: 0 auto;
+}
+
+.header__links > a:last-child::after {
+    content: '';
+    width: 10px;
+    background: #71a3d5;
+    left: 88%;
+    bottom: 0;
+    z-index: -1;
+    transform: rotate(25deg);
+    height: 120px;
+    top: -10px;
+    position: absolute;
+}
+
+#olympic_games {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0 0, 0 100%, 100% 90%, 100% 0);
+}
+
+.olympic_games__container {
+    background: url("./media/03-images/hero-lg.png");
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.olympic_games__title {
+    width: max-content;
+    color: white;
+}
+
+.olympic_games__title h1 {
+    font-size: 70px;
+}
+
+.olympic_games__title h2 {
+    font-size: 60px;
+    text-align: end;
+}
+
+.olympic_games__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    padding-top: 30px;
+    padding-right: 10px;
+}
+
+.olympic_games__logo {
+    margin: 15px 40px 0 0;
+}
+
+.olympic_games__mascot {
+    padding-left: 6.5%;
+}
+
+.olympic_games__slider {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 10%;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
+
+.olympic_games__list {
+    display: flex;
+    list-style-type: none;
+    background: #191c05ad;
+    padding: 10px 20px;
+    border-radius: 10px;
+    gap: 15px;
+}
+
+.olympic_games__item::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.olympic_games__list > li:first-child::before {
+    background: white;
+}
+
+.olympic_games__slider img, .olympic_games__slider li {
+    cursor: pointer;
+}
