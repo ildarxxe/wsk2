@@ -14,8 +14,19 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('./media/05-fonts/Poppins/Poppins-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .f-paris {
     font-family: 'Paris', serif;
+}
+
+.f-poppins {
+    font-family: 'Poppins', serif;
 }
 
 * {
@@ -30,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--white);
+    background-color: white;
 }
 
 .header__navbar {
@@ -55,6 +66,7 @@
 }
 
 .header__link {
+    font-size: 20px;
     position: relative;
     align-items: center;
     text-decoration: none;
@@ -107,13 +119,15 @@
 }
 
 .olympic_games__container {
-    background: url("./media/03-images/hero-lg.png");
+    background: url("./media/03-images/hero-lg.png") no-repeat center;
+    background-size: cover;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .olympic_games__title {
+    text-align: center;
     width: max-content;
     color: white;
 }
@@ -158,7 +172,7 @@
     display: flex;
     list-style-type: none;
     background: #191c05ad;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 10px;
     gap: 15px;
 }
@@ -166,8 +180,8 @@
 .olympic_games__item::before {
     content: "";
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     background: var(--white);
@@ -179,4 +193,705 @@
 
 .olympic_games__slider img, .olympic_games__slider li {
     cursor: pointer;
+}
+
+/* count down */
+#count-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0 0, 0 100%, 100% 90%, 100% 0);
+    padding-bottom: 80px;
+}
+
+.count-down__title h1 {
+    font-size: 70px;
+    background: linear-gradient(90deg, var(--red) 0%, rgb(117, 0, 119) 49%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.count-down__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.lines_titles {
+    width: 100%;
+}
+
+#count-down .lines_titles img {
+    margin: 0 35%;
+}
+
+.count-down__title {
+    margin-top: 3%;
+}
+
+.count-down__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.count-down__content h5 {
+    font-size: 28px;
+    font-weight: 100;
+    color: var(--gray);
+}
+
+.count-down__content p {
+    font-size: 18px;
+    font-weight: 100;
+    color: var(--gray-light);
+}
+
+.count-down__counter {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.count-down__counter--box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.time_box h1 {
+    font-size: 80px;
+    color: var(--gray-dark);
+}
+
+.time_box p {
+    color: var(--gray-light);
+    font-size: 20px;
+    text-align: center;
+}
+
+.colon {
+    color: var(--gray-light);
+    font-size: 90px;
+}
+
+.count-down__counter--logo {
+    position: absolute;
+    right: 60px;
+}
+
+/* Road to Paris */
+
+#road {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0% 10%, 0 100%, 1000% 10%, 100% 0);
+    background: var(--white);
+    padding: 90px 0;
+}
+
+.road__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6%;
+    text-align: center;
+}
+
+.road__title h1 {
+    font-size: 70px;
+    background: linear-gradient(90deg, var(--red) 0%, rgb(117, 0, 119) 49%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#road .lines_titles img {
+    margin-left: 49%;
+}
+
+.road__content {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.road__content--boxes {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5%;
+}
+
+.road__content--box {
+    width: 20%;
+    background: white;
+    border-radius: 5px;
+}
+
+.road__content--box img {
+    width: 100%;
+}
+
+.box__text {
+    padding: 5px 10px;
+}
+
+.road__content--box h2 {
+    font-family: 'Paris', sans-serif;
+}
+
+.road__content--box p {
+    margin: 15px 0;
+    font-family: 'Poppins', serif;
+}
+
+.road__content--pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1%;
+    width: 100%;
+    margin-right: 12.5%;
+    margin-top: 30px;
+}
+
+.road__content--pagination img {
+    cursor: pointer;
+}
+
+/* About the Games */
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0% 10%, 0 100%, 1000% 10%, 100% 0);
+    padding: 90px 0;
+}
+
+.about__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6%;
+    text-align: center;
+}
+
+.about__title h1 {
+    font-size: 70px;
+    background: linear-gradient(90deg, var(--red) 0%, rgb(117, 0, 119) 49%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#about .lines_titles img {
+    margin-left: 30%;
+}
+
+.about__content {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.about__content--boxes {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5%;
+}
+
+.about__content--box {
+    width: 20%;
+    background: var(--white);
+    border-radius: 5px;
+}
+
+.about__content--box img {
+    width: 100%;
+}
+
+.box__text {
+    padding: 5px 10px;
+}
+
+.about__content--box p {
+    margin: 15px 0;
+    /* ff poppins */
+}
+
+.date {
+    display: flex;
+    gap: 2%;
+    font-size: 18px;
+    color: var(--gray-dark);
+}
+
+.about__content--logo {
+    margin-top: 4%;
+}
+
+.about__content--pagination img {
+    cursor: pointer;
+}
+
+.box__title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: var(--red);
+    padding: 12px 8px;
+    color: white;
+}
+
+.box__title h2 {
+    font-weight: 100;
+    font-family: 'Paris', sans-serif;
+}
+
+/* Olympic shop */
+
+#shop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0% 10%, 0 100%, 1000% 10%, 100% 0);
+    background: var(--white);
+    padding: 90px 0;
+}
+
+.shop__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6%;
+    text-align: center;
+}
+
+.shop__title h1 {
+    font-size: 70px;
+    background: linear-gradient(90deg, var(--red) 0%, rgb(117, 0, 119) 49%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#shop .lines_titles img {
+    margin-left: 49%;
+}
+
+.shop__content {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop__content--boxes {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5%;
+}
+
+.shop__content--box {
+    width: 20%;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.shop__content--box img {
+    width: 100%;
+}
+
+#shop .box__text {
+    padding: 0 !important;
+}
+
+.shop__content--box h2 {
+    font-family: 'Paris', sans-serif;
+}
+
+.shop__content--box p {
+    margin: 15px 0;
+    font-family: 'Poppins', serif;
+}
+
+.shop__content--pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1%;
+    width: 100%;
+    margin-right: 12.5%;
+    margin-top: 30px;
+}
+
+.shop__content--pagination img {
+    cursor: pointer;
+}
+
+.shop__content--more {
+    margin-right: 12.5%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1%;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shop__content--more a {
+    color: var(--gray-dark);
+}
+
+.d-f {
+    display: flex;
+}
+
+.shop__content--box .box__text h2 {
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.shop__content--box button {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    background: var(--gray-dark);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Paris', sans-serif;
+}
+
+.shop__content--box .d-f {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shop__content--box .price {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--gray-light);
+}
+
+/* Partners */
+#partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.partners__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6% 0;
+    text-align: center;
+}
+
+.partners__title h1 {
+    font-size: 70px;
+    background: linear-gradient(90deg, var(--red) 0%, rgb(117, 0, 119) 49%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#partners .lines_titles img {
+    margin-left: 29%;
+}
+
+.partners__content {
+    width: 100%;
+    padding: 0 160px;
+}
+
+#partners img {
+    cursor: pointer;
+}
+
+.partners__content--wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.partners__content--box {
+    width: 20%;
+    text-align: center;
+    margin: 2% 0;
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0% 15%, 0 100%, 1000% 100%, 100% 0);
+    padding-top: 110px;
+    padding-bottom: 10px;
+    /*background: linear-gradient(to right, var(--gray) 0%, var(--gray-dark) 100%);*/
+    background: linear-gradient(to right, var(--gray) 50%, var(--gray-dark) 50%);
+    font-family: 'Poppins', serif;
+}
+
+.footer__links {
+    display: flex;
+    padding: 0 60px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer__links--box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__links--box span {
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__logos {
+    width: 100%;
+    text-align: center;
+    margin: 100px 0;
+}
+
+.footer__copyright span {
+    font-size: 18px;
+    color: white;
+}
+
+.tablet {
+    visibility: hidden;
+    position: absolute;
+}
+
+.mobile {
+    visibility: hidden;
+    position: absolute;
+}
+
+.desktop {
+    visibility: visible;
+    position: relative;
+}
+
+.about__content--pagination, .partners__content--pagination {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 3%;
+    gap: 2%;
+}
+
+.header__links.tablet img {
+    width: 30px;
+}
+
+@media (min-width: 1024px) {
+    .desktop {
+        visibility: visible !important;
+        position: relative !important;
+    }
+
+    .mobile {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .tablet {
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1024px) {
+    .desktop {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .mobile {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .tablet {
+        visibility: visible !important;
+        position: relative !important;
+    }
+
+    .about__content--pagination {
+        justify-content: end;
+        padding-right: 8.8%;
+    }
+
+    .partners__content--pagination {
+        justify-content: center;
+    }
+
+    .header__links {
+        justify-content: end;
+        padding-right: 20px;
+    }
+
+    .road__content--box {
+        width: 40%;
+    }
+
+    .road__content--pagination {
+        margin-right: 17.5%;
+    }
+
+    .about__content--box {
+        width: 40%;
+    }
+
+    .shop__content--box {
+        width: 40%;
+    }
+
+    .shop__content--more {
+        margin-right: 17.5%;
+    }
+
+    .shop__content--pagination {
+        margin-right: 17.5%;
+    }
+
+    .partners__content--box {
+        width: 33%;
+    }
+}
+
+@media (max-width: 800px) {
+    .desktop {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .tablet {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .mobile {
+        visibility: visible !important;
+        position: relative !important;
+    }
+
+    .header__links {
+        justify-content: end;
+        padding-right: 20px;
+    }
+
+    .olympic_games__mascot {
+        padding: 0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .olympic_games__slider {
+        justify-content: space-between;
+        padding: 0 1.5%;
+        position: relative;
+        margin: 3% 0;
+    }
+
+    .olympic_games__list {
+        display: none;
+    }
+
+    .olympic_games__top {
+        align-items: center;
+        padding-right: 0;
+    }
+
+    .road__content--box {
+        width: 80%;
+    }
+
+    .about__content--box {
+        width: 80%;
+    }
+
+    .shop__content--box {
+        width: 80%;
+    }
+
+    .road__content--pagination, .about__content--pagination, .shop__content--pagination, .partners__content--pagination {
+        margin: 4% 0;
+        justify-content: space-around;
+    }
+
+    .partners__content--box {
+        width: 50%;
+    }
+
+    .footer__links {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .footer__links--box img {
+        margin-right: auto;
+    }
+
+    .footer__links--box:first-child {
+        margin-bottom: 50px;
+    }
+
+    .partners__content {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .count-down__counter--logo {
+        position: relative;
+        right: 0;
+    }
+
+    .count-down__counter {
+        flex-direction: column;
+    }
 }
