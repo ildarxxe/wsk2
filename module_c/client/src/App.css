@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'Paris';
+    src: url('//media/fonts/Paris2024-Variable.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Paris', sans-serif;
+}
+
+.App {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.home__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.home__info--inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.home__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    text-decoration: none;
+}
+
+.countries {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.countries .button {
+    margin: 5px 0;
+}
+
+.title {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+    font-size: 26px;
+}
+
+.country-page h1, .country-page h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: white
+}
+
+.country-page .count_medals, .country-page h2 {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.country-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-page table {
+    margin: 20px 0;
+    color: white;
+}
+
+.country-page td {
+    border-left: 1px solid white;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+.country-page thead td {
+    border-bottom: 1px solid white;
+}
+
+.country-page td:last-child {
+    border-right: 1px solid white;
+}
+
+.medals tbody td:first-child {
+    text-align: start!important;
+}
+
+.medals td {
+    padding: 5px 15px;
+}
+
+.medals img {
+    margin-bottom: 30px;
+}
+
+td a {
+    text-decoration: none;
+    color: white;
+}
