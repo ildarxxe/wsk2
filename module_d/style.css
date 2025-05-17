@@ -226,7 +226,7 @@
 }
 
 #count-down .lines_titles img {
-    margin: 0 35%;
+    margin-right: 12vw;
 }
 
 .count-down__title {
@@ -319,7 +319,7 @@
 }
 
 #road .lines_titles img {
-    margin-left: 49%;
+    margin-left: 14vw;
 }
 
 .road__content {
@@ -403,7 +403,7 @@
 }
 
 #about .lines_titles img {
-    margin-left: 30%;
+    margin-right: 20vw;
 }
 
 .about__content {
@@ -499,7 +499,7 @@
 }
 
 #shop .lines_titles img {
-    margin-left: 49%;
+    margin-left: 16vw;
 }
 
 .shop__content {
@@ -630,7 +630,7 @@
 }
 
 #partners .lines_titles img {
-    margin-left: 29%;
+    margin-right: 21vw;
 }
 
 .partners__content {
@@ -824,6 +824,11 @@
         padding-right: 20px;
     }
 
+    .count-down__content {
+        padding: 0 20px;
+        text-align: center;
+    }
+
     .olympic_games__mascot {
         padding: 0;
         text-align: center;
@@ -831,10 +836,14 @@
     }
 
     .olympic_games__slider {
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 0 1.5%;
         position: relative;
         margin: 3% 0;
+    }
+
+    .olympic_games__logo {
+        margin: 15px 0 0 0;
     }
 
     .olympic_games__list {
@@ -869,7 +878,7 @@
 
     .footer__links {
         flex-direction: column;
-        align-items: start;
+        align-items: center;
     }
 
     .footer__links--box img {
