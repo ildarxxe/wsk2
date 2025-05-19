@@ -35,21 +35,44 @@
     padding: 0;
 }
 
-.header {
-    height: 10vh;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
-
 .header__navbar {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     align-items: stretch;
-    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.header__links {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    justify-content: center;
+}
+
+.header__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    text-decoration: none;
+    color: var(--gray-dark);
+    position: relative;
+    z-index: 1;
+}
+
+.header__link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    transform: skewX(-30deg);
+    z-index: -1;
+    border-left: 4px solid #71a3d5;
+    border-right: 4px solid #71a3d5;
 }
 
 .header__logo {
@@ -58,58 +81,7 @@
     align-items: center;
 }
 
-.header__links {
-    display: flex;
-    align-items: stretch;
-    height: 100%;
-    flex: .9;
-}
-
-.header__link {
-    font-size: 20px;
-    position: relative;
-    align-items: center;
-    text-decoration: none;
-    width: 20%;
-    color: var(--gray-dark);
-    font-weight: bold;
-    height: 100%;
-    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
-    overflow: hidden;
-    display: inline-grid;
-    text-align: center;
-}
-
-.header__link::before {
-    content: '';
-    width: 10px;
-    background: #71a3d5;
-    right: 88%;
-    bottom: 0;
-    z-index: -1;
-    transform: rotate(25deg);
-    height: 120px;
-    top: -10px;
-    position: absolute;
-}
-
-.header__link::before {
-    margin: 0 auto;
-}
-
-.header__links > a:last-child::after {
-    content: '';
-    width: 10px;
-    background: #71a3d5;
-    left: 88%;
-    bottom: 0;
-    z-index: -1;
-    transform: rotate(25deg);
-    height: 120px;
-    top: -10px;
-    position: absolute;
-}
-
+/* Olympic games */
 #olympic_games {
     display: flex;
     width: 100%;
@@ -902,5 +874,11 @@
 
     .count-down__counter {
         flex-direction: column;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1100px) {
+    .header__link {
+        padding: 0 20px;
     }
 }
