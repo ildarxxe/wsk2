@@ -5,411 +5,373 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Olympic Games - 2024</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="header">
-    <nav class="header__navbar">
+    <nav class="header__navbar f-paris">
         <div class="header__logo">
             <img src="./media/03-images/logo-black.png" alt="logo">
         </div>
         <div class="header__links f-paris desktop">
-            <a href="#count-down" class="header__link">CountDown</a>
+            <a href="#countdown" class="header__link">CountDown</a>
             <a href="#road" class="header__link">Road to Paris</a>
             <a href="#about" class="header__link">About the Games</a>
             <a href="#shop" class="header__link">Olympic Shop</a>
             <a href="#partners" class="header__link">Worldwide Partners</a>
         </div>
-        <div class="header__links f-paris tablet mobile">
+        <div class="header__links tablet mobile">
             <img src="./media/03-images/menuburger.svg" alt="menu">
         </div>
     </nav>
 </header>
-<section id="olympic_games">
-    <div class="olympic_games__container f-paris">
-        <div class="olympic_games__top">
-            <div class="olympic_games__title">
-                <h1>The Olympics Games</h1>
-                <h2>of Paris 2024</h2>
-            </div>
-            <div class="olympic_games__logo">
-                <img src="./media/03-images/logos-white.png" alt="logos">
-            </div>
+<section id="games">
+    <div class="games__top">
+        <div class="games__top--title f-paris">
+            <h1>The Olympics Games</h1>
+            <h2>of Paris 2024</h2>
         </div>
-        <div class="olympic_games__bottom">
-            <div class="olympic_games__slider mobile">
-                <div class="olympic_games__slider__prev">
-                    <img src="./media/03-images/btn-prev.svg" alt="previous">
-                </div>
-                <ul class="olympic_games__list">
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                </ul>
-                <div class="olympic_games__slider__next">
-                    <img src="./media/03-images/btn-next.svg" alt="next">
-                </div>
-            </div>
-            <div class="olympic_games__mascot">
-                <img src="./media/03-images/mascot-lg.png" class="desktop" alt="mascot">
-                <img src="./media/03-images/mascot-md.png" class="tablet" alt="mascot">
-                <img src="./media/03-images/mascot-sm.png" class="mobile" alt="mascot">
-            </div>
-            <div class="olympic_games__slider desktop tablet">
-                <div class="olympic_games__slider__prev">
-                    <img src="./media/03-images/btn-prev.svg" alt="previous">
-                </div>
-                <ul class="olympic_games__list">
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                    <li class="olympic_games__item"></li>
-                </ul>
-                <div class="olympic_games__slider__next">
-                    <img src="./media/03-images/btn-next.svg" alt="next">
-                </div>
-            </div>
+        <div class="games__top--logo">
+            <img src="./media/03-images/logos-white.png" alt="logo">
+        </div>
+    </div>
+    <div class="games__bottom">
+        <div class="games__mascot">
+            <img src="./media/03-images/mascot-lg.png" alt="mascot" class="desktop">
+            <img src="./media/03-images/mascot-md.png" alt="mascot" class="tablet">
+            <img src="./media/03-images/mascot-sm.png" alt="mascot" class="mobile">
+        </div>
+        <div class="games__slider">
+            <img src="./media/03-images/btn-prev.svg" alt="prev" class="prev__btn navigation__btn">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <img src="./media/03-images/btn-next.svg" alt="next" class="next__btn navigation__btn">
         </div>
     </div>
 </section>
-<section id="count-down">
-    <div class="count-down__title f-paris">
+<section id="countdown" class="section">
+    <div class="countdown__title section__title">
         <h1>CountDown</h1>
-        <div class="lines_titles">
-            <img src="./media/03-images/lines-titles.png" alt="lines titles">
+        <div class="title__lines">
+            <img src="./media/03-images/lines-titles.png" alt="lines">
         </div>
     </div>
-    <div class="count-down__content f-poppins">
-        <h5>Olympics Games Paris 2024</h5>
+    <div class="countdown__info">
+        <p>Olympic Games Paris 2024</p>
         <p>26 July - 11 August,</p>
     </div>
-    <div class="count-down__counter f-paris">
-        <div class="count-down__counter--box">
-            <div class="time_box">
+    <div class="countdown__counter">
+        <div class="counter">
+            <div class="counter__box">
                 <h1>28</h1>
                 <p>Days</p>
             </div>
-            <span class="colon">:</span>
-            <div class="time_box">
+            <span>:</span>
+            <div class="counter__box">
                 <h1>13</h1>
                 <p>Hours</p>
             </div>
-            <span class="colon">:</span>
-            <div class="time_box">
+            <span>:</span>
+            <div class="counter__box">
                 <h1>45</h1>
                 <p>Minutes</p>
             </div>
-            <span class="colon">:</span>
-            <div class="time_box">
+            <span>:</span>
+            <div class="counter__box">
                 <h1>05</h1>
                 <p>Seconds</p>
             </div>
         </div>
-        <div class="count-down__counter--logo">
-            <img src="./media/03-images/logos-countdown.png" alt="logos countdown">
+        <div class="countdown__counter--logo">
+            <img src="./media/03-images/logos-countdown.png" alt="logo">
         </div>
     </div>
 </section>
-<section id="road">
-    <div class="road__title f-paris">
+<section id="road" class="section">
+    <div class="road__title section__title">
         <h1>Road to Paris</h1>
-        <div class="lines_titles">
-            <img src="./media/03-images/lines-titles.png" alt="lines titles">
+        <div class="title__lines">
+            <img src="./media/03-images/lines-titles.png" alt="lines">
         </div>
     </div>
-    <div class="road__content">
-        <div class="road__content--boxes">
-
-            <div class="road__content--box tablet desktop mobile">
-                <div class="box__image">
-                    <img src="./media/03-images/road-01.png" alt="road image">
+    <div class="road__content section__content">
+        <div class="road__cards section__cards">
+            <div class="road__card section__card">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/road-01.png" alt="image">
                 </div>
-                <div class="box__text">
-                    <h2>2024 FIBA</h2>
+                <div class="text">
+                    <h1>2024 FIBA</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
-                    <span class="date"><i class="fa-regular fa-calendar-plus"></i>02-05 May</span>
+                    <span>02-05 May</span>
                 </div>
             </div>
-
-            <div class="road__content--box tablet desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/road-02.png" alt="road image">
+            <div class="road__card section__card tablet desktop">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/road-02.png" alt="image">
                 </div>
-                <div class="box__text">
-                    <h2>2024 UWV</h2>
+                <div class="text">
+                    <h1>2024 UWV</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
-                    <span class="date"><i class="fa-regular fa-calendar-plus"></i>08-12 May</span>
+                    <span>08-12 May</span>
                 </div>
             </div>
-
-            <div class="road__content--box desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/road-03.png" alt="road image">
+            <div class="road__card section__card desktop">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/road-03.png" alt="image">
                 </div>
-                <div class="box__text">
-                    <h2>2024 UIPM</h2>
+                <div class="text">
+                    <h1>2024 UIPM</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
-                    <span class="date"><i class="fa-regular fa-calendar-plus"></i>09-12 May</span>
+                    <span>09-12 May</span>
                 </div>
             </div>
-
-            <div class="road__content--box desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/road-01.png" alt="road image">
+            <div class="road__card section__card desktop">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/road-04.png" alt="image">
                 </div>
-                <div class="box__text">
-                    <h2>2024 ISSF</h2>
+                <div class="text">
+                    <h1>2024 ISSF</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
-                    <span class="date"><i class="fa-regular fa-calendar-plus"></i>14-27 May</span>
+                    <span>14-27 May</span>
                 </div>
             </div>
-
         </div>
-        <div class="road__content--pagination">
-            <img src="./media/03-images/btn-prev.svg" alt="prev">
-            <span class="desktop">1/4</span>
-            <span class="tablet">1/8</span>
-            <span class="mobile">1/16</span>
-            <img src="./media/03-images/btn-next.svg" alt="next">
+        <div class="road__navigation section__navigation">
+            <div class="road__navigation--wrapper section__navigation--wrapper">
+                <img src="./media/03-images/btn-prev.svg" alt="prev" class="navigation__btn prev__btn">
+                <span class="desktop">1/4</span>
+                <span class="tablet">1/8</span>
+                <span class="mobile">1/16</span>
+                <img src="./media/03-images/btn-next.svg" alt="next" class="navigation__btn next__btn">
+            </div>
         </div>
     </div>
 </section>
-<section id="about">
-    <div class="about__title f-paris">
+<section id="about" class="section">
+    <div class="about__title section__title">
         <h1>About the Games</h1>
-        <div class="lines_titles">
-            <img src="./media/03-images/lines-titles.png" alt="lines titles">
+        <div class="title__lines">
+            <img src="./media/03-images/lines-titles.png" alt="lines">
         </div>
     </div>
-    <div class="about__content">
-        <div class="about__content--boxes">
-
-            <div class="about__content--box">
-                <div class="box__title">
-                    <h2>SPORTS</h2>
+    <div class="about__content section__content">
+        <div class="about__cards section__cards">
+            <div class="about__card section__card">
+                <div class="about__card--title">
+                    <h1>SPORTS</h1>
                 </div>
-                <div class="box__image">
-                    <img src="./media/03-images/about-01.png" alt="about image">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/about-01.png" alt="image">
                 </div>
-                <div class="box__text">
+                <div class="text">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
                 </div>
             </div>
-
-            <div class="about__content--box tablet desktop">
-                <div class="box__title">
-                    <h2>VENUES</h2>
+            <div class="about__card section__card tablet desktop">
+                <div class="about__card--title">
+                    <h1>VENUES</h1>
                 </div>
-                <div class="box__image">
-                    <img src="./media/03-images/about-02.png" alt="about image">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/about-02.png" alt="image">
                 </div>
-                <div class="box__text">
+                <div class="text">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
                 </div>
             </div>
-
-            <div class="about__content--box desktop">
-                <div class="box__title">
-                    <h2>CELEBRATING THE GAMES</h2>
+            <div class="about__card section__card desktop">
+                <div class="about__card--title">
+                    <h1>CELEBRATING THE GAMES</h1>
                 </div>
-                <div class="box__image">
-                    <img src="./media/03-images/about-03.png" alt="about image">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/about-03.png" alt="image">
                 </div>
-                <div class="box__text">
+                <div class="text">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
                 </div>
             </div>
-
-            <div class="about__content--box desktop">
-                <div class="box__title">
-                    <h2>SPECTATOR INFORMATION</h2>
+            <div class="about__card section__card desktop">
+                <div class="about__card--title">
+                    <h1>SPECTATOR INFORMATION</h1>
                 </div>
-                <div class="box__image">
-                    <img src="./media/03-images/about-01.png" alt="about image">
+                <div class="section__card--img_wrapper">
+                    <img src="./media/03-images/about-04.png" alt="image">
                 </div>
-                <div class="box__text">
+                <div class="text">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore.</p>
                 </div>
             </div>
-
         </div>
-        <div class="about__content--pagination tablet mobile">
-            <img src="./media/03-images/btn-prev.svg" alt="prev">
-            <span class="tablet">1/2</span>
-            <span class="mobile">1/4</span>
-            <img src="./media/03-images/btn-next.svg" alt="next">
+        <div class="shop__navigation section__navigation tablet mobile">
+            <div class="shop__navigation--wrapper section__navigation--wrapper">
+                <img src="./media/03-images/btn-prev.svg" alt="prev" class="navigation__btn prev__btn">
+                <span class="tablet">1/2</span>
+                <span class="mobile">1/4</span>
+                <img src="./media/03-images/btn-next.svg" alt="next" class="navigation__btn next__btn">
+            </div>
         </div>
-        <div class="about__content--logo">
-            <img src="./media/03-images/logo-emblem.png" alt="logo emblem">
+        <div class="about__logo">
+            <img src="./media/03-images/logo-emblem.png" alt="logo">
         </div>
     </div>
 </section>
-<section id="shop">
-    <div class="shop__title f-paris">
+<section id="shop" class="section">
+    <div class="shop__title section__title">
         <h1>Olympic Shop</h1>
-        <div class="lines_titles">
-            <img src="./media/03-images/lines-titles.png" alt="lines titles">
+        <div class="title__lines">
+            <img src="./media/03-images/lines-titles.png" alt="lines">
         </div>
     </div>
-    <div class="shop__content">
-        <div class="shop__content--more f-poppins">
+    <div class="shop__content section__content">
+        <div class="shop__more">
             <a href="#">See more products</a>
         </div>
-        <div class="shop__content--boxes">
-
-            <div class="shop__content--box">
-                <div class="box__image">
-                    <img src="./media/03-images/shop-01.png" alt="shop image">
-                </div>
-                <div class="box__text">
-                    <h2>Latin Crest T-Shirt-White</h2>
-                    <div class="d-f">
+        <div class="shop__cards section__cards">
+            <div class="shop__card section__card">
+                    <img src="./media/03-images/shop-01.png" alt="image">
+                <div class="text">
+                    <h1>Latin Crest T-Shirt-White</h1>
+                    <div class="shop__card--price">
                         <button>BUY NOW</button>
-                        <span class="price">€42</span>
+                        <p>42</p>
                     </div>
                 </div>
             </div>
-
-            <div class="shop__content--box tablet desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/shop-02.png" alt="shop image">
-                </div>
-                <div class="box__text">
-                    <h2>Logo Graphic T-Shirt-White</h2>
-                    <div class="d-f">
+            <div class="shop__card section__card tablet desktop">
+                    <img src="./media/03-images/shop-02.png" alt="image">
+                <div class="text">
+                    <h1>Logo Graphic T-Shirt-White</h1>
+                    <div class="shop__card--price">
                         <button>BUY NOW</button>
-                        <span class="price">€42</span>
+                        <p>45</p>
                     </div>
                 </div>
             </div>
-
-            <div class="shop__content--box desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/shop-03.png" alt="shop image">
-                </div>
-                <div class="box__text">
-                    <h2>Plush Mascot-15 cms</h2>
-                    <div class="d-f">
+            <div class="shop__card section__card desktop">
+                    <img src="./media/03-images/shop-03.png" alt="image">
+                <div class="text">
+                    <h1>Plush Mascot-15 cms</h1>
+                    <div class="shop__card--price">
                         <button>BUY NOW</button>
-                        <span class="price">€42</span>
+                        <p>25</p>
                     </div>
                 </div>
             </div>
-
-            <div class="shop__content--box desktop">
-                <div class="box__image">
-                    <img src="./media/03-images/shop-01.png" alt="shop image">
-                </div>
-                <div class="box__text">
-                    <h2>Bobble Beanie</h2>
-                    <div class="d-f">
+            <div class="shop__card section__card desktop">
+                    <img src="./media/03-images/shop-04.png" alt="image">
+                <div class="text">
+                    <h1>Bobble Beanie</h1>
+                    <div class="shop__card--price">
                         <button>BUY NOW</button>
-                        <span class="price">€42</span>
+                        <p>35</p>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="shop__content--pagination">
-            <img src="./media/03-images/btn-prev.svg" alt="prev">
-            <span class="desktop">1/3</span>
-            <span class="tablet">1/6</span>
-            <span class="mobile">1/12</span>
-            <img src="./media/03-images/btn-next.svg" alt="next">
+        <div class="shop__navigation section__navigation">
+            <div class="shop__navigation--wrapper section__navigation--wrapper">
+                <img src="./media/03-images/btn-prev.svg" alt="prev" class="navigation__btn prev__btn">
+                <span class="desktop">1/3</span>
+                <span class="tablet">1/6</span>
+                <span class="mobile">1/12</span>
+                <img src="./media/03-images/btn-next.svg" alt="next" class="navigation__btn next__btn">
+            </div>
         </div>
     </div>
 </section>
-<section id="partners">
-    <div class="partners__title f-paris">
+<section id="partners" class="section">
+    <div class="partners__title section__title">
         <h1>Worldwide Partners</h1>
-        <div class="lines_titles">
-            <img src="./media/03-images/lines-titles.png" alt="lines titles">
+        <div class="title__lines">
+            <img src="./media/03-images/lines-titles.png" alt="lines">
         </div>
     </div>
     <div class="partners__content">
-        <div class="partners__content--wrap">
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-01.png" alt="partner">
-            </div>
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-02.png" alt="partner">
-            </div>
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-03.png" alt="partner">
-            </div>
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-04.png" alt="partner">
-            </div>
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-05.png" alt="partner">
-            </div>
-            <div class="partners__content--box">
-                <img src="./media/03-images/partners/partner-06.png" alt="partner">
-            </div>
-            <div class="partners__content--box tablet desktop">
-                <img src="./media/03-images/partners/partner-07.png" alt="partner">
-            </div>
-            <div class="partners__content--box tablet desktop">
-                <img src="./media/03-images/partners/partner-08.png" alt="partner">
-            </div>
-            <div class="partners__content--box tablet desktop">
-                <img src="./media/03-images/partners/partner-09.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-10.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-11.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-12.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-13.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-14.png" alt="partner">
-            </div>
-            <div class="partners__content--box desktop">
-                <img src="./media/03-images/partners/partner-15.png" alt="partner">
-            </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-01.png" alt="partner">
+        </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-02.png" alt="partner">
+        </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-03.png" alt="partner">
+        </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-04.png" alt="partner">
+        </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-05.png" alt="partner">
+        </div>
+        <div class="partners__card">
+            <img src="./media/03-images/partners/partner-06.png" alt="partner">
+        </div>
+        <div class="partners__card tablet desktop">
+            <img src="./media/03-images/partners/partner-07.png" alt="partner">
+        </div>
+        <div class="partners__card tablet desktop">
+            <img src="./media/03-images/partners/partner-08.png" alt="partner">
+        </div>
+        <div class="partners__card tablet desktop">
+            <img src="./media/03-images/partners/partner-09.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-10.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-11.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-12.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-13.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-14.png" alt="partner">
+        </div>
+        <div class="partners__card desktop">
+            <img src="./media/03-images/partners/partner-15.png" alt="partner">
         </div>
     </div>
-    <div class="partners__content--pagination tablet mobile">
-        <img src="./media/03-images/btn-prev.svg" alt="prev">
-        <span class="tablet">1/3</span>
-        <span class="mobile">1/5</span>
-        <img src="./media/03-images/btn-next.svg" alt="next">
+    <div class="partners__navigation section__navigation tablet mobile">
+        <div class="partners__navigation--wrapper section__navigation--wrapper">
+            <img src="./media/03-images/btn-prev.svg" alt="prev" class="navigation__btn prev__btn">
+            <span class="tablet">1/3</span>
+            <span class="mobile">1/5</span>
+            <img src="./media/03-images/btn-next.svg" alt="next" class="navigation__btn next__btn">
+        </div>
     </div>
 </section>
 <footer class="footer">
     <div class="footer__links">
-        <div class="footer__links--box">
-            <span>Download the Official App</span>
-            <img src="./media/03-images/icons-app.png" alt="apps download">
+        <div class="footer__link">
+            <p>Download the Official App</p>
+            <img src="./media/03-images/icons-app.png" alt="icons app">
         </div>
-        <div class="footer__links--box">
-            <span>Follow us on</span>
-            <img src="./media/03-images/icons-social.svg" alt="social media">
+        <div class="footer__link">
+            <p>Follow us on</p>
+            <img src="./media/03-images/icons-social.svg" alt="icons social app">
         </div>
     </div>
-    <div class="footer__logos">
-        <img src="./media/03-images/logos-white.png" alt="logos white">
+    <div class="footer__logo">
+        <img src="./media/03-images/logos-white.png" alt="logo">
     </div>
     <div class="footer__copyright">
         <span>© Copyright 2024. All rights reserved</span>
     </div>
 </footer>
 </body>
-<script src="https://kit.fontawesome.com/a5d6cad370.js" crossorigin="anonymous"></script>
 </html>
