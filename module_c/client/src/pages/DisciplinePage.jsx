@@ -6,26 +6,24 @@ import Header from "../components/common/Header";
 
 const DisciplinePage = () => {
     const [loading, setLoading] = useState(false);
-    const [dis, setDis] = useState([]);
     const info = useSelector(state => state.countryInfo);
     const {name} = useParams();
     const [countries, setCountries] = useState([]);
 
     useEffect(() => {
         if (info.countries.length > 0) {
-            setDis(info.countries);
-            const results = [];
-            info.countries.forEach(d => {
-                d.disciplines.forEach(i => {
-                    if (i.name === name) {
-                        results.push({
-                            name: d.name,
-                            medals: i.gold + i.silver + i.bronze
-                        });
+            const result = [];
+            info.countries.filter(country => {
+                return country.disciplines.find(d => {
+                    if (d.name === name) {
+                        result.push({
+                            country: country.name,
+                            medals: d.gold + d.silver + d.bronze
+                        })
                     }
-                });
-            });
-            setCountries(results);
+                })
+            })
+            setCountries(result);
             setLoading(true);
         } else {
             setLoading(false);
@@ -49,7 +47,7 @@ const DisciplinePage = () => {
                         <tbody>
                         {countries.map(c => (
                             <tr key={c.name}>
-                                <td><Link to={"/disciplines/" + name + "/" + c.name}>{c.name}</Link></td>
+                                <td><Link to={"/disciplines/" + name + "/" + c.country}>{c.country}</Link></td>
                                 <td>{c.medals}</td>
                             </tr>
                         ))}

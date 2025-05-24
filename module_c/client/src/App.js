@@ -28,9 +28,7 @@ function App() {
     }, [])
     return (
         <BrowserRouter>
-            <div className="App" style={{
-                backgroundImage: "url(/media/images/bg.png)",
-            }}>
+            <div className="App">
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/countries" element={<Countries />}/>

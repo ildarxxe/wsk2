@@ -1,0 +1,200 @@
+:root {
+    --gray-blue: #53506c;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: system-ui;
+}
+
+header {
+    height: 9vh;
+    background: var(--gray-blue);
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.welcome {
+    font-size: 26px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.login {
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-direction: column;
+}
+
+.form_label {
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.form_label input {
+    height: 30px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form_label label {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+form button {
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    padding: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    margin-top: 20px;
+}
+
+form {
+    padding: 20px 40px;
+    background: var(--gray-blue);
+    color: white;
+    border-radius: 5px;
+    width: 25%;
+}
+
+.alert {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: #ececec;
+    margin: 20px 0;
+}
+
+.admin_links {
+    height: 9vh;
+    background: #f1f1f1;
+    font-size: 20px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+}
+
+.admin_links a {
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+.categories {
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories form {
+    width: max-content;
+    margin: 10px auto;
+}
+
+.category_box {
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.category_box .change {
+    border: none;
+    background: #53506c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.poll_box {
+    padding-left: 20%;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.poll {
+    padding: 0 220px;
+}
+
+.poll ul {
+    margin-left: 50px;
+}
+
+.poll h2 {
+    margin: 10px 0;
+}
+
+.poll p {
+    margin: 10px 0;
+}
+
+.poll_form {
+    padding: 0;
+    background: none;
+    margin: 0 220px;
+}
+
+.showShortLinksBtn {
+    width: 380px;
+    margin-left: 220px;
+    border: none;
+    font-size: 20px;
+    padding: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    margin-top: 20px;
+}
+
+.short_links {
+    margin-left: 240px;
+}
+
+.short_links li {
+    margin: 10px 0;
+}
+
+.public_polls form {
+    width: 100%;
+}

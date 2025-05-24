@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {Link} from 'react-router-dom';
 import Header from "../components/common/Header";
 
 const DisciplineOfCountry = () => {
@@ -12,20 +11,16 @@ const DisciplineOfCountry = () => {
 
     useEffect(() => {
         if (info.countries.length > 0) {
-            info.countries.forEach(c => {
-                if (c.name === country) {
-                    c.disciplines.map(d => {
-                        if (d.name === discipline) {
-                            setDis({
-                                gold: d.gold,
-                                silver: d.silver,
-                                bronze: d.bronze,
-                                total: d.gold + d.silver + d.bronze,
-                            });
-                        }
-                    })
-                }
-            })
+            const found_country = info.countries.find(c => c.name === country)
+            const found_discipline = found_country.disciplines.find(d => d.name === discipline)
+            const medals = found_discipline.gold + found_discipline.silver + found_discipline.bronze
+            const disObj = {
+                gold: found_discipline.gold,
+                silver: found_discipline.silver,
+                bronze: found_discipline.bronze,
+                total: medals
+            }
+            setDis(disObj)
             setLoading(true);
         }
     }, [info]);

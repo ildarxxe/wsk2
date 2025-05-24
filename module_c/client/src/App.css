@@ -12,10 +12,11 @@
     font-family: 'Paris', sans-serif;
 }
 
-.App {
-    background-repeat: no-repeat;
+body {
+    background: url('/public/media/images/bg.png') no-repeat fixed center;
     background-size: cover;
     height: 100vh;
+
 }
 
 .home__logo {
