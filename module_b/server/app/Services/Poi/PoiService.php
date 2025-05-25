@@ -1,10 +1,11 @@
 <?php
-namespace App\Services\CreatePoi;
+
+namespace App\Services\Poi;
 class PoiService
 {
-    private $latitude;
+    private float $latitude;
 
-    private $longitude;
+    private float $longitude;
 
     public function __construct($latitude, $longitude)
     {
@@ -12,17 +13,17 @@ class PoiService
         $this->longitude = deg2rad($longitude);
     }
 
-    public function getLatitude()
+    public function getLatitude(): float
     {
         return $this->latitude;
     }
 
-    public function getLongitude()
+    public function getLongitude(): float
     {
         return $this->longitude;
     }
 
-    public function distanceTo(PoiService $other)
+    public function distanceTo(PoiService $other): float|int
     {
         $earthRadius = 6371000;
 

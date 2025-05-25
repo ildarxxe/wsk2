@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('polls', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255);
-            $table->text('description');
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('title', 255);
+            $table->text('description');
         });
     }
 

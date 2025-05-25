@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.forms[0];
-    form.addEventListener('submit', (e) => {
+    document.querySelector('.public_poll_form').addEventListener('submit', (e) => {
         e.preventDefault();
         const answers = {}
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const short_link = window.location.pathname.split('/').pop();
         const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
-        fetch(`http://127.0.0.1:8000/${short_link}/send-poll`, {
+        fetch(`http://127.0.0.1:8000/send`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'X-CSRF-TOKEN': csrf
             },
             body: JSON.stringify({
-                answers: answers
+                answers: answers,
+                shortLink: short_link
             })
         })
             .then(response => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                document.querySelector('.alert').querySelector('h2').textContent = "Успешно! Спасибо за прохождение!"
+                document.querySelector('.alert').querySelector('h1').textContent = "Спасибо за прохождение опроса"
                 document.querySelector('.send').style.display = 'none'
             })
             .catch(error => {

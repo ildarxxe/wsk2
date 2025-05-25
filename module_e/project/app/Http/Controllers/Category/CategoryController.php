@@ -9,48 +9,43 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 class CategoryController extends Controller
 {
-    public function showCategories(): Application|View|Factory|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+    public function showCategories(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $categories = Category::all();
         if (!$categories) {
-            return redirect()->back()->with('message', 'Категории не найдены');
+            return view('admin.categories.categories')->with('message', 'Категории не найдены');
         }
-        return view('admin.categories.categories', ['categories' => $categories]);
+        return view('admin.categories.categories')->with('categories', $categories);
     }
 
     public function updateCategory(Request $request, $id): RedirectResponse
     {
         $data = $request->validate([
-            'title' => 'required|max:255|min:3',
+            'title' => 'required|min:3|max:255',
         ]);
-        $category = Category::query()->find($id);
-        if (!$category) {
-            return redirect('/admin/categories')->with('message', 'Категория не найдена');
-        }
+        $category = Category::query()->findOrFail($id);
         try {
             $category->update($data);
             $category->save();
-            return redirect('/admin/categories')->with('message', 'Успешно обновлено');
+            return redirect()->back()->with('message', 'Успешно обновлено');
         } catch (\Exception $exception) {
-            return redirect('/admin/categories')->with('message', 'Произошла ошибка');
+            return redirect()->back()->with('message', 'Произошла ошибка');
         }
     }
 
-    public function createCategory(Request $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+    public function createCategory(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'title' => 'required|max:255|min:3',
+            'title' => 'required|min:3|max:255',
         ]);
-
         try {
             Category::query()->create($data);
-            return redirect('/admin/categories')->with('message', 'Успешно создано');
+            return redirect()->back()->with('message', 'Успешно создано');
         } catch (\Exception $exception) {
-            return redirect('/admin/categories')->with('message', 'Ошибка создания');
+            return redirect()->back()->with('message', 'Произошла ошибка');
         }
     }
 }

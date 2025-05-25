@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Poll;
 
 use App\Http\Controllers\Controller;
-use App\Models\Answer;
-use App\Models\Category;
 use App\Models\Poll;
 use App\Models\Question;
 use App\Models\ResponseAnswer;
 use App\Models\ShortLink;
 use App\Models\UserResponse;
-use App\Services\getPollInfoService;
+use App\Services\GetPollInfoService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 
 class PollController extends Controller
@@ -24,61 +23,78 @@ class PollController extends Controller
     public function showPolls(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $polls = Poll::all();
-        if (!$polls) {
-            return view('admin.polls.polls')->with('message', 'Опросы не найдены');
-        }
         return view('admin.polls.polls')->with('polls', $polls);
     }
 
-    public function showPollById($id): Factory|Application|View|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+    public function showPollById($id): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        $pollService = new getPollInfoService($id);
-        $poll = $pollService->getPollInfo();
+        $getPollInfoService = new GetPollInfoService($id);
+        $poll = $getPollInfoService->getPollInfo();
         return view('admin.polls.poll')->with('poll', $poll);
     }
 
-    public function showPollByShortLink($short_link): Factory|Application|View|\Illuminate\Contracts\Foundation\Application|RedirectResponse
+    public function deletePoll($id): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
-        $short_link = ShortLink::query()->where('short_code', $short_link)->first();
-        if (!$short_link) {
-            abort(404, 'Опрос не найден');
-        }
-        $poll_id = $short_link->poll_id;
+        $poll = Poll::query()->find($id);
 
-        $pollService = new getPollInfoService($poll_id);
-        $poll = $pollService->getPollInfo();
-        $poll['short_link'] = $short_link;
-
-        return view('polls')->with('poll', $poll);
-    }
-
-    public function sendPoll(Request $request, $short_link): JsonResponse
-    {
-        $answers = $request->answers;
         DB::beginTransaction();
         try {
-            $user_response = UserResponse::query()->create([
-                'short_link_id' => ShortLink::query()->where('short_code', $short_link)->first()->id,
+            $questions = Question::query()->where('poll_id', $id)->get();
+            foreach ($questions as $question) {
+                $question->answers()->delete();
+                $question->delete();
+
+            }
+
+            $links = ShortLink::query()->where('poll_id', $id)->get();
+            foreach ($links as $link) {
+                $link->userResponses()->delete();
+                $link->delete();
+            }
+            $poll->delete();
+            DB::commit();
+            return redirect('/admin/polls')->with('message', 'Успешное удаление');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect('/admin/polls')->with('message', $e->getMessage());
+//            return redirect('/admin/polls')->with('message', 'Произошла ошибка');
+        }
+    }
+
+    public function showPublicPollByShortLink($shortLink): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
+    {
+        $shortLink = ShortLink::query()->where('short_code', $shortLink)->first();
+        $getPollInfoService = new GetPollInfoService($shortLink->poll_id);
+        $poll = $getPollInfoService->getPollInfo();
+        return view('poll')->with('poll', $poll);
+    }
+
+    public function sendPublicPoll(Request $request): JsonResponse
+    {
+        DB::beginTransaction();
+        try {
+            $short_link = ShortLink::query()->where('short_code', $request['shortLink'])->first();
+            $user_res = UserResponse::query()->create([
+                'short_link_id' => $short_link->id,
                 'user_agent' => $request->userAgent(),
                 'ip_address' => $request->ip(),
-                'completed_at' => now()
+                'completed_at' => now(),
             ]);
-            // qId - question id, aId - answer id
-            foreach ($answers as $qId => $aIds) {
-                foreach ($aIds as $aId) {
+            dd($user_res->id);
+            foreach ($request['answers'] as $answer) {
+                foreach ($answer as $questionId => $answerId) {
                     ResponseAnswer::query()->create([
-                        'user_response_id' => $user_response->id,
-                        'question_id' => $qId,
-                        'answer_id' => $aId
+                        'user_response_id' => $user_res->id,
+                        'question_id' => $questionId,
+                        'answer_id' => $answerId,
                     ]);
                 }
             }
             DB::commit();
+            return response()->json(['status' => true]);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['status' => false]);
         }
-
-        return response()->json(['status' => true]);
     }
 }

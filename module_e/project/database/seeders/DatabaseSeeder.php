@@ -36,17 +36,17 @@ class DatabaseSeeder extends Seeder
         Poll::query()->create([
             'title' => 'Как часто вы пользуетесь социальными сетями?',
             'description' => 'Этот опрос направлен на изучение предпочтений в использовании социальных сетей: частоты использования, целей и любимых платформ. Результаты помогут узнать, как современные пользователи взаимодействуют с социальными платформами.',
-            'category_id' => 1,
+            'category_id' => 1
         ]);
         Poll::query()->create([
             'title' => 'Ваши привычки в питании',
             'description' => 'Данный опрос предназначен для изучения предпочтений и привычек в питании. Ваши ответы помогут узнать больше о современных подходах к еде.',
-            'category_id' => 2,
+            'category_id' => 2
         ]);
         Poll::query()->create([
             'title' => 'Ваши предпочтения в отдыхе',
             'description' => 'Этот опрос поможет выявить, какие виды отдыха предпочитают современные пользователи, а также понять, какие направления наиболее привлекательны для путешествий.',
-            'category_id' => 1,
+            'category_id' => 3
         ]);
 
         Question::query()->create([
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
         Question::query()->create([
             'poll_id' => 3,
             'question_text' => 'Вы предпочитаете путешествовать:',
-            'type' => 'multiple'
+            'type' => 'single'
         ]);
         Question::query()->create([
             'poll_id' => 3,
@@ -211,7 +211,6 @@ class DatabaseSeeder extends Seeder
             'question_id' => 5,
             'answer_text' => 'Не замечаю ее'
         ]);
-
 
         Answer::query()->create([
             'question_id' => 6,

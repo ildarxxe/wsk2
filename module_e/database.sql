@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Май 24 2025 г., 19:45
+-- Время создания: Май 25 2025 г., 14:08
 -- Версия сервера: 9.2.0
 -- Версия PHP: 8.1.28
 
@@ -40,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$DL0fB6kPBrp6pV76zlOryO2L3eTA7MuNdbdrWnXW8XRBriurjmzVO', '2025-05-24 06:24:59', '2025-05-24 06:24:59');
+(1, 'admin', '$2y$10$ruxz1JlH.YeHFcHTL0.IfO2/EkiYliJ1Ub.rWVVnAi8b6vo.ttzB6', '2025-05-25 01:40:44', '2025-05-25 01:40:44');
 
 -- --------------------------------------------------------
 
@@ -136,10 +136,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `title`) VALUES
-(1, 'Пhивычки использования социальных сетей'),
+(1, 'Привычки использования социальных сетей'),
 (2, 'Предпочтения в еде'),
 (3, 'Путешествия и отдых'),
-(4, 'Новая категория');
+(4, 'Названи');
 
 -- --------------------------------------------------------
 
@@ -160,13 +160,13 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(3, '2025_05_24_111104_create_categories_table', 1),
-(4, '2025_05_24_111127_create_polls_table', 1),
-(5, '2025_05_24_111235_create_questions_table', 1),
-(6, '2025_05_24_111313_create_answers_table', 1),
-(7, '2025_05_24_111329_create_short_links_table', 1),
-(8, '2025_05_24_111405_create_user_responses_table', 1),
-(9, '2025_05_24_111525_create_response_answers_table', 1);
+(3, '2025_05_25_061219_create_categories_table', 1),
+(4, '2025_05_25_061300_create_polls_table', 1),
+(5, '2025_05_25_061322_create_questions_table', 1),
+(6, '2025_05_25_061512_create_answers_table', 1),
+(7, '2025_05_25_061522_create_short_links_table', 1),
+(8, '2025_05_25_061558_create_user_responses_table', 1),
+(9, '2025_05_25_061821_create_response_answers_table', 1);
 
 -- --------------------------------------------------------
 
@@ -195,19 +195,19 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `polls` (
   `id` bigint UNSIGNED NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category_id` bigint UNSIGNED NOT NULL
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `polls`
 --
 
-INSERT INTO `polls` (`id`, `title`, `description`, `category_id`) VALUES
-(1, 'Как часто вы пользуетесь социальными сетями?', 'Этот опрос направлен на изучение предпочтений в использовании социальных сетей: частоты использования, целей и любимых платформ. Результаты помогут узнать, как современные пользователи взаимодействуют с социальными платформами.', 1),
-(2, 'Ваши привычки в питании', 'Данный опрос предназначен для изучения предпочтений и привычек в питании. Ваши ответы помогут узнать больше о современных подходах к еде.', 2),
-(3, 'Ваши предпочтения в отдыхе', 'Этот опрос поможет выявить, какие виды отдыха предпочитают современные пользователи, а также понять, какие направления наиболее привлекательны для путешествий.', 1);
+INSERT INTO `polls` (`id`, `category_id`, `title`, `description`) VALUES
+(1, 1, 'Как часто вы пользуетесь социальными сетями?', 'Этот опрос направлен на изучение предпочтений в использовании социальных сетей: частоты использования, целей и любимых платформ. Результаты помогут узнать, как современные пользователи взаимодействуют с социальными платформами.'),
+(2, 2, 'Ваши привычки в питании', 'Данный опрос предназначен для изучения предпочтений и привычек в питании. Ваши ответы помогут узнать больше о современных подходах к еде.'),
+(3, 3, 'Ваши предпочтения в отдыхе', 'Этот опрос поможет выявить, какие виды отдыха предпочитают современные пользователи, а также понять, какие направления наиболее привлекательны для путешествий.');
 
 -- --------------------------------------------------------
 
@@ -217,8 +217,8 @@ INSERT INTO `polls` (`id`, `title`, `description`, `category_id`) VALUES
 
 CREATE TABLE `questions` (
   `id` bigint UNSIGNED NOT NULL,
-  `type` enum('single','multiple') COLLATE utf8mb4_unicode_ci NOT NULL,
   `poll_id` bigint UNSIGNED NOT NULL,
+  `type` enum('single','multiple') COLLATE utf8mb4_unicode_ci NOT NULL,
   `question_text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -226,22 +226,22 @@ CREATE TABLE `questions` (
 -- Дамп данных таблицы `questions`
 --
 
-INSERT INTO `questions` (`id`, `type`, `poll_id`, `question_text`) VALUES
-(1, 'single', 1, 'Как часто вы заходите в социальные сети?'),
-(2, 'multiple', 1, 'Для чего вы чаще всего используете социальные сети?'),
-(3, 'multiple', 1, 'Какие из социальных сетей вы используете?'),
-(4, 'single', 1, 'Сколько времени в день вы проводите в социальных сетях?'),
-(5, 'single', 1, 'Как вы относитесь к рекламе в социальных сетях?'),
-(6, 'single', 2, 'Как часто вы едите вне дома?'),
-(7, 'multiple', 2, 'Какие виды кухонь вы предпочитаете?'),
-(8, 'multiple', 2, 'Какие из перечисленных блюд вы чаще всего выбираете?'),
-(9, 'single', 2, 'Вы считаете калории?'),
-(10, 'single', 2, 'Вы предпочитаете сладкое или соленое?'),
-(11, 'single', 3, 'Какой отдых вы предпочитаете?'),
-(12, 'single', 3, 'Как часто вы путешествуете?'),
-(13, 'multiple', 3, 'Какие направления для отдыха вам больше всего интересны?'),
-(14, 'multiple', 3, 'Вы предпочитаете путешествовать:'),
-(15, 'single', 3, 'Какой бюджет на отдых для вас приемлем?');
+INSERT INTO `questions` (`id`, `poll_id`, `type`, `question_text`) VALUES
+(1, 1, 'single', 'Как часто вы заходите в социальные сети?'),
+(2, 1, 'multiple', 'Для чего вы чаще всего используете социальные сети?'),
+(3, 1, 'multiple', 'Какие из социальных сетей вы используете?'),
+(4, 1, 'single', 'Сколько времени в день вы проводите в социальных сетях?'),
+(5, 1, 'single', 'Как вы относитесь к рекламе в социальных сетях?'),
+(6, 2, 'single', 'Как часто вы едите вне дома?'),
+(7, 2, 'multiple', 'Какие виды кухонь вы предпочитаете?'),
+(8, 2, 'multiple', 'Какие из перечисленных блюд вы чаще всего выбираете?'),
+(9, 2, 'single', 'Вы считаете калории?'),
+(10, 2, 'single', 'Вы предпочитаете сладкое или соленое?'),
+(11, 3, 'single', 'Какой отдых вы предпочитаете?'),
+(12, 3, 'single', 'Как часто вы путешествуете?'),
+(13, 3, 'multiple', 'Какие направления для отдыха вам больше всего интересны?'),
+(14, 3, 'single', 'Вы предпочитаете путешествовать:'),
+(15, 3, 'single', 'Какой бюджет на отдых для вас приемлем?');
 
 -- --------------------------------------------------------
 
@@ -255,39 +255,6 @@ CREATE TABLE `response_answers` (
   `question_id` bigint UNSIGNED NOT NULL,
   `answer_id` bigint UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `response_answers`
---
-
-INSERT INTO `response_answers` (`id`, `user_response_id`, `question_id`, `answer_id`) VALUES
-(1, 1, 6, 21),
-(2, 1, 7, 25),
-(3, 1, 8, 29),
-(4, 1, 8, 30),
-(5, 1, 8, 31),
-(6, 1, 9, 33),
-(7, 1, 10, 38),
-(8, 2, 6, 21),
-(9, 2, 7, 26),
-(10, 2, 7, 28),
-(11, 2, 8, 29),
-(12, 2, 8, 30),
-(13, 2, 9, 33),
-(14, 2, 10, 38),
-(15, 3, 6, 21),
-(16, 3, 7, 26),
-(17, 3, 7, 27),
-(18, 3, 7, 28),
-(19, 3, 8, 31),
-(20, 3, 8, 32),
-(21, 3, 9, 35),
-(22, 3, 10, 38),
-(23, 4, 6, 22),
-(24, 4, 7, 26),
-(25, 4, 8, 30),
-(26, 4, 9, 34),
-(27, 4, 10, 38);
 
 -- --------------------------------------------------------
 
@@ -306,9 +273,7 @@ CREATE TABLE `short_links` (
 --
 
 INSERT INTO `short_links` (`id`, `poll_id`, `short_code`) VALUES
-(1, 1, 'goasaSyh'),
-(2, 1, '5KP42Pg7'),
-(3, 2, 'T0X4supR');
+(2, 1, 'ph3QpPaP');
 
 -- --------------------------------------------------------
 
@@ -325,16 +290,6 @@ CREATE TABLE `user_responses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `user_responses`
---
-
-INSERT INTO `user_responses` (`id`, `short_link_id`, `user_agent`, `ip_address`, `completed_at`) VALUES
-(1, 3, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '127.0.0.1', '14:41:14'),
-(2, 3, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '127.0.0.1', '14:42:32'),
-(3, 3, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '127.0.0.1', '14:42:53'),
-(4, 3, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '127.0.0.1', '14:43:45');
-
---
 -- Индексы сохранённых таблиц
 --
 
@@ -342,7 +297,8 @@ INSERT INTO `user_responses` (`id`, `short_link_id`, `user_agent`, `ip_address`,
 -- Индексы таблицы `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_name_unique` (`name`);
 
 --
 -- Индексы таблицы `answers`
@@ -458,19 +414,19 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT для таблицы `response_answers`
 --
 ALTER TABLE `response_answers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `short_links`
 --
 ALTER TABLE `short_links`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `user_responses`
 --
 ALTER TABLE `user_responses`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

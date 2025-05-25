@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="46fa411a-2278-4c3c-b083-a9ce8ea20dd7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/project/public/js/jquery-3.7.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/public/js/poll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/public/js/publicPoll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/resources/views/poll.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jquery.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/module_e.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/module_e.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ERD.png" beforeDir="false" afterPath="$PROJECT_DIR$/ERD.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Http/Controllers/Category/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Http/Controllers/Category/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Http/Controllers/Poll/PollController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Http/Controllers/Poll/PollController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Http/Controllers/ShortLink/ShortLinkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Http/Controllers/ShortLink/ShortLinkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Http/Middleware/AdminMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Http/Middleware/AdminMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/Answer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/Poll.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/Poll.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/ShortLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/ShortLink.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Models/UserResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Models/UserResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/app/Services/getPollInfoService.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/app/Services/getPollInfoService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111104_create_categories_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111127_create_polls_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111235_create_questions_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111313_create_answers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111329_create_short_links_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111405_create_user_responses_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/migrations/2025_05_24_111525_create_response_answers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/js/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/js/polls.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/js/publicPolls.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/admin/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/admin/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/admin/categories/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/admin/categories/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/admin/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/admin/polls/poll.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/admin/polls/poll.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/admin/polls/polls.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/admin/polls/polls.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/polls.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/routes/web.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Bin\php-8.4.4\php.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2xZl1BFFsQDb6rkCut9klzhvIju" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ildar/OneDrive/Documents/WSK2/module_e",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2024.3.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ildar\OneDrive\Documents\WSK2\module_e" />
+      <recent name="C:\Users\ildar\OneDrive\Documents\WSK2\module_e\project\public\js" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PS-243.24978.50" />
+        <option value="bundled-php-predefined-a98d8de5180a-fbeb0b58ac0f-com.jetbrains.php.sharedIndexes-PS-243.24978.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46fa411a-2278-4c3c-b083-a9ce8ea20dd7" name="Changes" comment="" />
+      <created>1748153259880</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748153259880</updated>
+      <workItem from="1748153261323" duration="13624000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -13,19 +13,16 @@ class AuthMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param Closure(Request): (Response) $next
+     * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->bearerToken();
-        $tokenRec = Token::query()->where('token', $token)->first();
-        if (!$tokenRec) {
-            return response()->json(['Message' => 'Unauthorized user'], 401);
+        $user_id = Token::query()->where('token', $token)->first()->user_id ?? null;
+        if (!$user_id) {
+            return response()->json(['Message' => 'Unauthorized user']);
         }
-        $user = User::query()->find((int)$tokenRec->user_id);
-        if (!$user) {
-            return response()->json(['Message' => 'Unauthorized user'], 401);
-        }
+        $user = User::query()->find($user_id);
         $request->setUserResolver(function () use ($user) {
             return $user;
         });

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Poll;
@@ -10,9 +12,10 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 
-class getPollInfoService {
+class GetPollInfoService
+{
     private int $poll_id;
-    public function __construct($poll_id) {
+    public function __construct(int $poll_id) {
         $this->poll_id = $poll_id;
         $this->getPollInfo();
     }
@@ -23,20 +26,20 @@ class getPollInfoService {
         if (!$poll) {
             return redirect()->back()->with('message', 'Опрос не найден');
         }
-        $category = Category::query()->find($poll->category_id)->title;
-        $poll['category'] = $category;
 
-        $questionsFromDB = Question::query()->where('poll_id', $this->poll_id)->get();
+        $category = Category::query()->findOrFail($poll->category_id);
+        $poll['category'] = $category->title;
 
-        foreach ($questionsFromDB as $question) {
-            $answersFromDb = Answer::query()->where('question_id', $question->id)->get();
-            $question['answers'] = $answersFromDb;
+        $questions = Question::query()->where('poll_id', $this->poll_id)->get();
+        foreach ($questions as $question) {
+            $answers = Answer::query()->where('question_id', $question->id)->get();
+            $question['answers'] = $answers;
         }
 
-        $poll['questions'] = $questionsFromDB;
+        $poll['questions'] = $questions;
 
-        $short_links = ShortLink::query()->where('poll_id', $this->poll_id)->get();
-        $poll['short_links'] = $short_links;
+        $links = ShortLink::query()->where('poll_id', $this->poll_id)->get();
+        $poll['links'] = $links;
         return $poll;
     }
 }

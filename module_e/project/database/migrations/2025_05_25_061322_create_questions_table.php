@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['single', 'multiple']);
             $table->bigInteger('poll_id')->unsigned();
             $table->foreign('poll_id')->references('id')->on('polls');
+            $table->enum('type', ['single', 'multiple']);
             $table->string('question_text', 255);
         });
     }

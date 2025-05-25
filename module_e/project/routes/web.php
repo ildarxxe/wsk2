@@ -10,34 +10,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/{short_link}/send-poll', [PollController::class, 'sendPoll'])->name('send.poll');
-
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::withoutMiddleware('admin')->group(function () {
-        Route::get('/login', function () {
-            return view('admin.login');
-        });
-        Route::post('login', [AdminController::class, 'login'])->name('admin.login');
+    Route::withoutMiddleware('admin')->middleware('guest')->group(function () {
+        Route::get('/login', [AdminController::class, 'showLogin']);
+        Route::post('/login', [AdminController::class, 'login'])->name('admin.login');
     });
-    Route::get('/', function () {
-        return view('admin.admin');
-    });
-    Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+    Route::get('/', [AdminController::class, 'showAdmin']);
+    Route::get('/logout', [AdminController::class, 'logout']);
 
     Route::prefix('categories')->group(function () {
         Route::get('/', [CategoryController::class, 'showCategories']);
-        Route::post('/{id}', [CategoryController::class, 'updateCategory'])->name('update.category');
-        Route::post('/', [CategoryController::class, 'createCategory'])->name('create.category');
+        Route::post('/', [CategoryController::class, 'createCategory'])->name('category.create');
+        Route::post('/{id}', [CategoryController::class, 'updateCategory'])->name('category.update');
     });
 
     Route::prefix('polls')->group(function () {
         Route::get('/', [PollController::class, 'showPolls']);
         Route::get('/{id}', [PollController::class, 'showPollById']);
+        Route::delete('/{id}', [PollController::class, 'deletePoll'])->name('poll.delete');
     });
 
-    Route::prefix('short-links')->group(function () {
-        Route::post('/{id}', [ShortLinkController::class, 'createShortLink'])->name('create.link');
+    Route::prefix('links')->group(function () {
+        Route::post('/{id}/create', [ShortLinkController::class, 'createLink'])->name('link.create');
+        Route::delete('/{id}/delete', [ShortLinkController::class, 'deleteLink'])->name('link.delete');
     });
 });
 
-Route::get('/{short_link}', [PollController::class, 'showPollByShortLink']);
+Route::get('/{short_link}', [PollController::class, 'showPublicPollByShortLink']);
+Route::post('/send', [PollController::class, 'sendPublicPoll'])->name('poll.send');

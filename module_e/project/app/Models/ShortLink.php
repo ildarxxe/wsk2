@@ -11,6 +11,11 @@ class ShortLink extends Model
     public $timestamps = false;
     protected $fillable = [
         'poll_id',
-        'short_code',
+        'short_code'
     ];
+
+    public function userResponses(): void
+    {
+        $this->hasMany(UserResponse::class);
+    }
 }

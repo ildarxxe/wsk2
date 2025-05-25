@@ -10,8 +10,8 @@ class Poll extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'category_id',
         'title',
         'description',
+        'category_id',
     ];
 }

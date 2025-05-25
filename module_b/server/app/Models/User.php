@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'email',
         'password',
     ];
 
@@ -29,26 +30,15 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'remember_token',
     ];
-    protected $table = 'users';
 
-    public function getToken() {
-        $id = $this->id;
-        $token = Token::query()->where('user_id', $id)->first();
-        return $token->token ?? null;
-    }
-
-    public function getRole() {
-        $id = $this->id;
-        $role = Role::query()->where('user_id', $id)->first();
-        return $role->role ?? null;
-    }
-
-
-    public function setToken($value) {
-        $id = $this->id;
-        $token = Token::query()->where('user_id', $id)->first();
-        $token->token = $value;
-        $token->save();
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

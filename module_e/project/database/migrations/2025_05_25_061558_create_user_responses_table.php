@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('short_link_id')->unsigned();
             $table->foreign('short_link_id')->references('id')->on('short_links');
-            $table->string('user_agent', 255);
-            $table->string('ip_address', 255);
+            $table->string('user_agent');
+            $table->string('ip_address');
             $table->time('completed_at');
         });
     }

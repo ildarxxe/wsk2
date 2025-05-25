@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="welcome">
-        Добро пожаловать на главную страницу!
+        <h1>Добро пожаловать на главную страницу!</h1>
     </div>
 @endsection

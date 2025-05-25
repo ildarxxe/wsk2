@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlaceRequest extends FormRequest
+class UpdateScheduleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,13 @@ class PlaceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'type' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'open_time' => 'required',
-            'close_time' => 'required',
-            'description' => 'min:1',
+            'line' => 'min:1',
+            'from_place_id' => 'min:1',
+            'to_place_id' => 'min:1',
+            'departure_time' => 'date_format:H:i:s',
+            'arrival_time' => 'date_format:H:i:s',
+            'distance' => 'min:1',
+            'speed' => 'min:1',
         ];
     }
 }

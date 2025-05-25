@@ -10,13 +10,28 @@ use Illuminate\Support\Str;
 
 class ShortLinkController extends Controller
 {
-    public function createShortLink($id): RedirectResponse
+    public function createLink($id): RedirectResponse
     {
-        $short_code = Str::random(8);
-        ShortLink::query()->create([
-            'poll_id' => $id,
-            'short_code' => $short_code,
-        ]);
-        return redirect()->back()->with('message', "Сгенерированная ссылка: http://127.0.0.1:8000/".$short_code);
+        $link = Str::random(8);
+        try {
+            ShortLink::query()->create([
+                'poll_id' => $id,
+                'short_code' => $link
+            ]);
+            return redirect()->back()->with('message', 'Сгенерированная ссылка: http://127.0.0.1:8000/'.$link);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('message', 'Произошла ошибка');
+        }
+    }
+
+    public function deleteLink($id): RedirectResponse
+    {
+        $link = ShortLink::query()->find($id);
+        try {
+            $link->delete();
+            return redirect()->back()->with('message', 'Ссылка удалена');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('message', 'Произошла ошибка');
+        }
     }
 }

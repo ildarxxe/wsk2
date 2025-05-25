@@ -12,5 +12,11 @@ class Question extends Model
     protected $fillable = [
         'poll_id',
         'question_text',
+        'type'
     ];
+
+    public function answers(): void
+    {
+        $this->hasMany(Answer::class);
+    }
 }

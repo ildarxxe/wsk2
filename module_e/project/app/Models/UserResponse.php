@@ -12,7 +12,7 @@ class UserResponse extends Model
     protected $fillable = [
         'user_agent',
         'ip_address',
-        'short_link_id',
         'completed_at',
+        'short_link_id'
     ];
 }

@@ -1,35 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'Категории опросов')
+@section('title', 'Категории')
 
 @section('content')
     <div class="categories">
-        @if (session('message'))
-            <div class="alert">
-                <h2>{{session('message')}}</h2>
-            </div>
-        @endif
         <h1 class="title">Категории</h1>
-            <form action="{{route('create.category')}}" method="POST">
-                <h1>Создать новую категорию</h1>
-                @csrf
-                <div class="form_label">
-                    <label for="title">Введите название категории:</label>
-                    <input type="text" name="title" id="title">
-                    <button type="submit">Создать</button>
-                </div>
-            </form>
+        <button class="create">Создать категорию</button>
+        <form action="{{route('category.create')}}" method="POST" class="hidden create_category">
+            @csrf
+            <input type="text" name="title" id="title" placeholder="Название категории">
+            <button type="submit">Создать</button>
+        </form>
         @foreach($categories as $category)
             <div class="category_box">
-                <h2>{{$category['title']}}</h2>
-                <form action="{{route('update.category', ['id' => $category['id']])}}" class="hidden" method="POST">
+                <div class="category_box--text">
+                    <h2>Категория: {{$category['title']}}</h2>
+                    <p class="change">Изменить</p>
+                </div>
+                <form action="{{route('category.update', ['id' => $category['id']])}}" method="POST" class="hidden">
                     @csrf
-                    <div class="form_label">
-                        <input type="text" name="title" value="{{$category['title']}}">
-                    </div>
-                    <button type="submit" class="save">Сохранить</button>
+                    <input type="text" name="title" id="title" value="{{$category['title']}}">
+                    <button type="submit">Сохранить</button>
                 </form>
-                <button class="change">Изменить</button>
             </div>
         @endforeach
     </div>

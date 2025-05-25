@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Role;
+use App\Models\Token;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,32 +17,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\UserController::factory(10)->create();
-
-         User::query()->create([
-             'name' => 'admin',
-             'password' => Hash::make('adminpass'),
-         ]);
-         User::query()->create([
-             'name' => 'user1',
-             'password' => Hash::make('user1pass'),
-         ]);
-         User::query()->create([
-             'name' => 'user2',
-             'password' => Hash::make('user2pass'),
-
-         ]);
         Role::query()->create([
+            'name' => 'user',
+        ]);
+        Role::query()->create([
+            'name' => 'admin',
+        ]);
+
+        User::query()->create([
+            'username' => 'admin',
+            'password' => Hash::make('adminpass'),
+            'role_id' => 2,
+        ]);
+        User::query()->create([
+            'username' => 'user1',
+            'password' => Hash::make('adminpass'),
+            'role_id' => 1,
+        ]);
+        User::query()->create([
+            'username' => 'user2',
+            'password' => Hash::make('user2pass'),
+            'role_id' => 1,
+        ]);
+
+        Token::query()->create([
             'user_id' => 1,
-            'role' => 'admin'
+            'token' => Str::random(30)
         ]);
-        Role::query()->create([
+        Token::query()->create([
             'user_id' => 2,
-            'role' => 'user'
+            'token' => Str::random(30)
         ]);
-        Role::query()->create([
+        Token::query()->create([
             'user_id' => 3,
-            'role' => 'user'
+            'token' => Str::random(30)
         ]);
     }
 }

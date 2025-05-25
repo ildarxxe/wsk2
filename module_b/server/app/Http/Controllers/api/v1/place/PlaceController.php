@@ -1,103 +1,119 @@
 <?php
 
-namespace app\Http\Controllers\api\v1\place;
+namespace App\Http\Controllers\api\v1\place;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PlaceRequest;
+use App\Http\Requests\CreatePlaceRequest;
+use App\Http\Requests\UpdatePlaceRequest;
 use App\Models\Place;
-use App\Services\CreatePoi\PoiFactoryService;
-use App\Services\CreateTarget\CreateTargetService;
-use Illuminate\Http\Request;
+use App\Models\RouteSearch;
+use App\Models\Schedule;
+use App\Services\Poi\PoiFactoryService;
+use App\Services\Poi\PoiService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Random\RandomException;
 
 class PlaceController extends Controller
 {
     public function getAllPlaces(): JsonResponse
     {
         $places = Place::all();
-        if (!$places) {
-            return response()->json(['status' => false, 'err_msg' => 'places not found']);
+        if ($places->isEmpty()) {
+            return response()->json(['message' => 'places not found'], 404);
         }
-        return response()->json(['status' => true, 'data' => $places]);
+
+        return response()->json([$places]);
     }
 
-    /**
-     * @throws RandomException
-     */
     public function getPlaceById($id): JsonResponse
     {
-        $place = Place::query()->find($id);
-        if (!$place) {
-            return response()->json(['status' => false, 'err_msg' => 'place not found']);
-        }
-        $place['num_searches'] = random_int(1,100);
-        return response()->json(['status' => true, 'place' => $place]);
+        $place = Place::query()->findOrFail($id);
+        $num_searches = RouteSearch::query()->where('from_place_id', $id)->orWhere('to_place_id', $id)->count();
+        $place['num_searches'] = $num_searches;
+        unset($place['id']);
+        return response()->json($place);
     }
 
-    public function createPlace(PlaceRequest $request): JsonResponse
+    public function createPlace(CreatePlaceRequest $request): JsonResponse
     {
         $data = $request->validated();
-
-        if (!$data) {
-            return response()->json(['status' => false, 'Message' => 'Data cannot be processed']);
-        }
 
         DB::beginTransaction();
         try {
             $image = $data['image'];
             $image_name = $image->getClientOriginalName();
-            $path = $image->storeAs('images', $image_name);
-            $data['image_path'] = Storage::url($path);
+            $image_path = $image->storeAs('images', $image_name, 'public');
+
+            $data['image_path'] = $image_path;
             unset($data['image']);
 
-            $target = ['latitude' => CreateTargetService::randomFloat(0, 90), 'longitude' => CreateTargetService::randomFloat(0, 180)];
-            $poiFactoryService = new PoiFactoryService($start = ['latitude' => 13.772478, 'longitude' => 100.482653], $end = ['latitude' => 13.736280, 'longitude' => 100.536051], $width = 1280, $height = 800);
-            $coordinates = $poiFactoryService->calculate($target);
-            $data['x'] = (int)$coordinates['x'];
-            $data['y'] = (int)$coordinates['y'];
+            $target = ['latitude' => $data['latitude'], 'longitude' => $data['longitude']];
+            $poiService = new PoiFactoryService();
+            $calc = $poiService->calculate($target);
+
+            $data['x'] = $calc['x'];
+            $data['y'] = $calc['y'];
 
             Place::query()->create($data);
             DB::commit();
-
-            return response()->json(['status' => true, 'Message' => 'create success']);
+            return response()->json(['Message' => 'create success']);
         } catch (\Exception $e) {
             DB::rollBack();
-            if (isset($path)) {
-                Storage::delete($path);
-            }
-            return response()->json(['status' => false, 'err_msg' => $e->getMessage()], 500);
+            return response()->json(['Message' => 'Data cannot be created'], 422);
         }
     }
 
-    public function updatePlace(Request $request, $id): JsonResponse
-    {
-        $place = Place::query()->find($id);
-        if (!$place) {
-            return response()->json(['status' => false, 'err_msg' => 'place not found']);
-        }
+    public function updatePlace($id, UpdatePlaceRequest $request): JsonResponse {
+        $data = $request->validated();
 
-        $data = $request->all();
+        $place = Place::query()->findOrFail($id);
+
+        DB::beginTransaction();
         try {
+            if ($data['image']) {
+                $old_image = $place->image_path;
+                Storage::delete($old_image);
+
+                $image = $data['image'];
+                $image_name = $image->getClientOriginalName();
+                $image_path = $image->storeAs('images', $image_name, 'public');
+                $data['image_path'] = $image_path;
+                unset($data['image']);
+            }
+
+            if (isset($data['longitude']) || isset($data['latitude'])) {
+                $target = ['latitude' => $data['latitude'] ?? $place->latitude, 'longitude' => $data['longitude'] ?? $place->longitude];
+                $poiService = new PoiFactoryService();
+                $calc = $poiService->calculate($target);
+
+                $data['x'] = $calc['x'];
+                $data['y'] = $calc['y'];
+            }
+
             $place->update($data);
-            $place->save();
-            return response()->json(['status' => true, 'Message' => 'update success', 'data' => $request->all()]);
+            DB::commit();
+            return response()->json(['Message' => 'update success']);
         } catch (\Exception $e) {
-            return response()->json(['status' => false, 'Message' => 'Data cannot be updated'], 400);
+            DB::rollBack();
+            return response()->json(['Message' => 'Data cannot be updated'], 400);
         }
     }
 
     public function deletePlace($id): JsonResponse {
-        $place = Place::query()->find($id);
-        $image_path = $place->image_path;
+        $place = Place::query()->findOrFail($id);
+        DB::beginTransaction();
         try {
-            Storage::disk('public')->delete($image_path);
+            $image_path = $place->image_path;
+            Storage::delete($image_path);
+            Schedule::query()->where('from_place_id', $id)->orWhere('to_place_id', $id)->delete();
             $place->delete();
-            return response()->json(['status' => true, 'Message' => 'delete success']);
+            DB::commit();
+            return response()->json(['Message' => 'delete success']);
         } catch (\Exception $e) {
-            return response()->json(['status' => false, 'Message' => 'Data cannot be deleted'], 400);
+            DB::rollBack();
+            return response()->json(['Message' => 'Data cannot be deleted'], 400);
         }
     }
 }
