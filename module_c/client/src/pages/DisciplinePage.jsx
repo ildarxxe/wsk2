@@ -1,59 +1,57 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {Link} from 'react-router-dom';
-import Header from "../components/common/Header";
+import Header from "../components/common/header/Header";
+import Button from "../components/button/Button";
+import {Link, useParams} from "react-router-dom";
+import disciplines from "./Disciplines";
 
 const DisciplinePage = () => {
-    const [loading, setLoading] = useState(false);
-    const info = useSelector(state => state.countryInfo);
-    const {name} = useParams();
-    const [countries, setCountries] = useState([]);
+    const [discipline, setDiscipline] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+
+    const {country_name, discipline_name} = useParams();
+
+    const countriesData = useSelector((state) => state.country.countries);
 
     useEffect(() => {
-        if (info.countries.length > 0) {
-            const result = [];
-            info.countries.filter(country => {
-                return country.disciplines.find(d => {
-                    if (d.name === name) {
-                        result.push({
-                            country: country.name,
-                            medals: d.gold + d.silver + d.bronze
-                        })
-                    }
-                })
-            })
-            setCountries(result);
+        if (countriesData.length > 0) {
+            const country = countriesData.find((country) => country.name === country_name);
+            const discipline = country.disciplines.find((discipline) => discipline.name === discipline.name);
+            setDiscipline(discipline);
             setLoading(true);
-        } else {
-            setLoading(false);
         }
-    }, [info, name]);
-
+    }, [countriesData])
     return (
         <>
-            <Header/>
-            <div className={"country-page"}>
+            <Header />
+            <div className={'discipline'}>
+                <div className="title"><h1>{discipline_name}</h1></div>
+                <div className="discipline__img">
+                    <img src={'/images/disciplines/'+discipline_name+'.svg'} alt="discipline"/>
+                </div>
+                <div className="title"><h1>{country_name}</h1></div>
                 {loading ? <>
-                    <h1>{name}</h1>
-                    <img src={"/media/images/" + name + ".svg"} alt="Discipline logo"/>
-                    <table>
-                        <thead>
-                        <tr>
-                            <td>COUNTRY</td>
-                            <td>MEDALS</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {countries.map(c => (
-                            <tr key={c.name}>
-                                <td><Link to={"/disciplines/" + name + "/" + c.country}>{c.country}</Link></td>
-                                <td>{c.medals}</td>
+                    <div className="table_wrap">
+                        <table>
+                            <thead>
+                            <tr>
+                                <td className={'center'}>GOLD</td>
+                                <td>SILVER</td>
+                                <td>BRONZE</td>
+                                <td>TOTAL</td>
                             </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </> : 'Loading'}
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{discipline.gold}</td>
+                                <td>{discipline.silver}</td>
+                                <td>{discipline.bronze}</td>
+                                <td>{discipline.gold + discipline.silver + discipline.bronze}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </> : "Loading"}
             </div>
         </>
     );

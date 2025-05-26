@@ -1,33 +1,39 @@
 import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
+import Header from "../components/common/header/Header";
 import Button from "../components/button/Button";
-import Header from "../components/common/Header";
-
 
 const Disciplines = () => {
-    const [loading, setLoading] = React.useState(false);
-    const info = useSelector(state => state.countryInfo);
     const [disciplines, setDisciplines] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+
+    const countriesData = useSelector((state) => state.country.countries);
+
     useEffect(() => {
-        if (info.countries.length > 0) {
-            const ds = info.countries.flatMap(country => country.disciplines);
+        if (countriesData.length > 0) {
+            const ds = countriesData.flatMap((country) => country.disciplines)
             const newDs = new Map();
-            ds.forEach(d => {
-                newDs.set(d.name, {name: d.name, image: d.image});
+            ds.forEach(discipline => {
+                newDs.set(discipline.name, {name: discipline.name, image: discipline.image});
             })
             const disciplines = Array.from(newDs.values());
             setDisciplines(disciplines);
             setLoading(true);
         }
-    }, [info]);
+    }, [countriesData])
     return (
         <>
             <Header />
-            <div className="title"><h1>Disciplines</h1></div>
-            <div className="countries">
+            <div className={'disciplines'}>
+                <div className="title"><h1>Disciplines</h1></div>
                 {loading ? <>
-                    {disciplines.map(item =>
-                        <Button text={item.name} src={'/media/' + item.image} alt={"Discipline"} href={"/disciplines/" + item.name} />
+                    {disciplines.map((discipline) =>
+                        <Button
+                            key={discipline.name}
+                            text={discipline.name}
+                            href={`/disciplines/${discipline.name}`}
+                            alt={discipline.name}
+                            src={discipline.image} />
                     )}
                 </> : "Loading"}
             </div>

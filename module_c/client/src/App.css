@@ -1,119 +1,173 @@
 @font-face {
-    font-family: 'Paris';
-    src: url('//media/fonts/Paris2024-Variable.ttf') format('truetype');
-    font-style: normal;
+    font-family: "Paris";
+    src: url("/public/fonts/Paris2024/Paris2024-Variable.ttf") format("truetype");
     font-weight: normal;
+    font-style: normal;
 }
 
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
-    font-family: 'Paris', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: "Paris", sans-serif;
 }
 
 body {
-    background: url('/public/media/images/bg.png') no-repeat fixed center;
+    background: url("/public/images/bg.png") no-repeat fixed center;
     background-size: cover;
-    height: 100vh;
-
 }
 
-.home__logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
+.home, .countries, .country__buttons, .disciplines {
+    padding: 20px 50px;
 }
 
-.home__info--inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 50px;
+.home__frame {
+    margin: 40px 0;
 }
 
-.home__links {
+.home__buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.button {
-    text-decoration: none;
+.home__buttons .button {
+    margin: 10px 0;
 }
 
-.countries {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.countries .button {
-    margin: 5px 0;
-}
-
-.title {
-    text-align: center;
-    margin-top: 10px;
+.title h1 {
+    font-size: 42px;
     color: white;
-    font-size: 26px;
-}
-
-.country-page h1, .country-page h2 {
     text-align: center;
-    margin: 20px 0;
-    color: white
+    margin-bottom: 50px;
 }
 
-.country-page .count_medals, .country-page h2 {
-    margin: 0!important;
-    padding: 0!important;
+.button img {
+    width: 40px;
 }
 
-.country-page {
+.countries, .disciplines {
+    padding-top: 0;
+}
+
+.countries .button, .disciplines .button {
+    margin: 5px;
+}
+
+.country__img {
+    text-align: center;
+}
+
+.country .title > h1 {
+    margin-bottom: 10px;
+}
+
+.country {
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.country-page table {
-    margin: 20px 0;
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 22px;
+}
+
+td {
     color: white;
+    padding: 10px;
 }
 
-.country-page td {
-    border-left: 1px solid white;
-    font-size: 20px;
-    padding: 5px;
-    text-align: center;
-}
-
-.country-page thead td {
+thead td {
     border-bottom: 1px solid white;
+    border-left: 1px solid white;
 }
 
-.country-page td:last-child {
+thead td:last-child {
     border-right: 1px solid white;
 }
 
-.medals tbody td:first-child {
-    text-align: start!important;
+tbody td {
+    border-left: 1px solid white;
+    text-align: center;
 }
 
-.medals td {
-    padding: 5px 15px;
+tbody td:last-child {
+    border-right: 1px solid white;
 }
 
-.medals img {
-    margin-bottom: 30px;
+.country__buttons {
+    width: 100%;
 }
 
-td a {
-    text-decoration: none;
+.country__buttons .button {
+    margin: 5px 0;
+}
+
+.country table {
+    margin: 20px 0;
+}
+
+.medals {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.medals h1 {
+    font-size: 90px;
+    margin: 0;
+    padding: 0;
+    line-height: 86%;
+}
+
+.countMedals table {
+    width: 100%;
+}
+
+.table_wrap {
+    padding: 0 20px;
+}
+
+.center {
+    text-align: center !important;
+}
+
+.left {
+    text-align: left !important;
+}
+
+.discipline__img {
+    text-align: center;
+}
+
+.discipline__img img {
+    width: 140px;
+}
+
+.title {
+    text-transform: uppercase
+}
+
+.discipline .title:first-child > h1 {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.discipline .title > h1 {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.discipline table {
+    width: 100%;
+}
+
+a {
     color: white;
 }

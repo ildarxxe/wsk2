@@ -1,25 +1,28 @@
 import React, {useEffect} from 'react';
 import {useSelector} from "react-redux";
 import Button from "../components/button/Button";
-import Header from "../components/common/Header";
-
+import Header from "../components/common/header/Header";
 
 const Countries = () => {
+    const [countries, setCountries] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
-    const info = useSelector(state => state.countryInfo);
+
+    const countriesData = useSelector((state) => state.country.countries);
+
     useEffect(() => {
-        if (info.countries.length > 0) {
+        if (countriesData.length > 0) {
+            setCountries(countriesData);
             setLoading(true);
         }
-    }, [info]);
+    }, [countriesData])
     return (
         <>
             <Header />
-            <div className="title"><h1>Countries</h1></div>
-            <div className="countries">
+            <div className={'countries'}>
+                <div className="title"><h1>Countries</h1></div>
                 {loading ? <>
-                    {info.countries.map(item =>
-                        <Button text={item.name} src={'/media/' + item.flag} alt={"Flag"} href={"/countries/" + item.id} />
+                    {countries.map((country) =>
+                        <Button key={country.id} text={country.name} href={`/countries/${country.id}`} alt={country.name} src={country.flag} />
                     )}
                 </> : "Loading"}
             </div>

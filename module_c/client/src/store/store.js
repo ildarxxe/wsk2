@@ -1,8 +1,8 @@
-import {configureStore} from '@reduxjs/toolkit';
-import countryInfoReducer from '../features/countryInfoSlice.js';
+import {configureStore} from '@reduxjs/toolkit'
+import countryReducer from '../features/countrySlice.js';
 
 export const store = configureStore({
     reducer: {
-        countryInfo: countryInfoReducer,
+        country: countryReducer
     }
 })

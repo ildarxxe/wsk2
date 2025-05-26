@@ -1,8 +1,8 @@
 import React from 'react';
-import './Button.css'
 import {Link} from "react-router-dom";
+import './Button.css';
 
-const Button = ({text, src, alt, href}) => {
+const Button = ({src, href, alt, text}) => {
     return (
         <Link to={href} className="button">
             <img src={src} alt={alt}/>
